@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseButton;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
@@ -27,10 +28,10 @@ public class Main extends Application {
     private List<Combo> combos = new ArrayList<>();
 
     private Parent createContent(){
-        Pane root = new Pane();
+        GridPane root = new GridPane();
         root.setPrefSize(600, 650);
-        Button button = new Button("Restart");
-        root.getChildren().add(button);
+        //root.autosize();
+        //root.setGridLinesVisible(true);
 
         for (int i= 0; i < 3; i++){
             for (int j = 0; j < 3; j++){
@@ -40,9 +41,11 @@ public class Main extends Application {
 
                 root.getChildren().add(tile);
 
+
                 board[j][i] = tile;
             }
         }
+        //root.add(new Button("Restart"), 0,0);
         //horizontal
         for (int k = 0; k < 3; k++){
             combos.add(new Combo(board[0][k], board[1][k], board[2][k]));
